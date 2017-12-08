@@ -1,0 +1,35 @@
+//index page will be a login page
+app.get("/")
+//if new user go to sign up link
+
+
+app.get("/giftology")
+//main page will have two options
+
+app.get("/giftology/profile")
+1) ask user to create profile
+    a)self- interests
+            wishes/allow a search right here for links
+    b) children- interests
+                 wishes/allow a search right here for links       
+
+app.get("/giftology/friends")
+2)allow user to see a list of all friends in db
+// click on friend to show that persons data
+
+("/giftology/friends/:id")
+//data shown will be interests
+                     wishes( these should include images and links)
+                     gifts_bought
+                     event
+
+//allow user to search api using interest as keyword
+//update gifts_bought with link and pic of item chosen
+
+//will not need a search if selecting something from wishes
+//update status of wishes to bought
+
+//ask user if they would like to buy something else for this friend?(reload("/giftology/friends/:id")),
+//or if they would like to buy something for someone else?(redirect("/giftology/friends"))
+//or update their profile?(redirect("/giftology/profile"))
+//or logout( still working on that)

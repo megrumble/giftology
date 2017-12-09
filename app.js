@@ -72,6 +72,8 @@ app.use(bodyParser.urlencoded({
 
 //create routes
 app.get('/', function (req, res) {
-  res.render("home")
+  res.render("hero", {
+    message: ""
+  });
 }); // 
 app.listen(3000);

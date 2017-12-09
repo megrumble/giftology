@@ -17,5 +17,8 @@
     "mysql": "^2.13.0",
     "req-flash": "0.0.3",
     "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.5"
   }
 }

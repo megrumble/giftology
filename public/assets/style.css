@@ -1,0 +1,26 @@
+body {
+  padding-top: 56px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 110px;
+  }
+}
+
+.card {
+  height: 350px;
+}
+
+.lead {
+  color: white;
+}
+
+.jumbotron {
+  background-image: url("../assets/images/jumbo-bg.png");
+  background-size: cover;
+}
+
+.btn-primary {
+  background-color: black;
+}

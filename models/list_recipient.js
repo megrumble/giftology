@@ -1,31 +1,31 @@
-var Sequelize = require("sequelize");
-// sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/connection.js");
+module.exports = function(sequelize, DataTypes){
 
 var List_Recipient = sequelize.define("list_recipient",{
     id:{
-       type: Sequelize.INTEGER
+       type: DataTypes.INTEGER,
+       primaryKey: true,
+       autoIncrement: true,
+       allowNull: false
+
     },
     userID:{
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
     },
     relationID:{
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
     },
     name:{
-        type: Sequelize.STRING
+        type: DataTypes.STRING
     },
     email:{
-        type: Sequelize.STRING
+        type: DataTypes.STRING
     },
     photo_url:{
-        type: Sequelize.STRING
+        type: DataTypes.STRING
     },
     haveSentEmail:{
-        type: Sequelize.BOOLEAN
+        type: DataTypes.BOOLEAN
     }
 });
-    
-List_Recipient.sync();
-    
-    module.exports = List_Recipient;
+  return List_Recipient;  
+};

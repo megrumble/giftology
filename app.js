@@ -2,76 +2,41 @@ var express = require('express');
 var ejs = require('ejs');
 var engine = require('ejs-mate');
 var path = require('path');
-//middleware
+var db = require("./models");
+
+//var express = require("express");
+var bodyParser = require("body-parser");
+var path = require("path");
+const ejsLayouts = require("express-ejs-layouts");
+var index = require('./routes/index')
+
+// bring in the models
+var db = require("./models");
+
 var app = express();
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(__dirname + "./public"));
 
-// var favicon = require('serve-favicon');
-// var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-// var routes = require('./routes');
-// var index = require('./routes/index');
-// var users = require('./routes/users');
-// var http = require('http');
-
-// var mysql = require('mysql');
-// //initiate sessions module
-// var session = require('express-session');
-// app.use(session({
-//   secret: 'merry christmas',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: {
-//     maxAge: 60000
-//   }
-// }));
-
-// var connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'root',
-//   database: 'test'
-// });
-
-// connection.connect();
-
-// view engine setup
-app.engine('ejs', engine);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
-app.use(bodyParser.json());
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', index);
-// app.use('/users', users);
 
-// catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');;
 
-// // error handler
-// app.use(function (err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(ejsLayouts);
 
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
 
-//create routes
-app.get('/', function (req, res) {
-  res.render("home")
-}); // 
-app.listen(3000);
+app.use('/', index);
+// app.use("/create", routes);
+
+
+// listen on port 3000
+var port = process.env.PORT || 3000;
+db.sequelize.sync().then(function () {
+  app.listen(port, function () {
+    console.log("server listening on port", port);
+  });
+});

@@ -2,7 +2,6 @@
 var bcrypt   = require("bcrypt-nodejs");
 var password = "bacon";
 
-
 //Hash the password
 bcrypt.hash(password, null, null, function(err, hash) {
     //Log results (remove this in final app)

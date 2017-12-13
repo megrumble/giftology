@@ -21,6 +21,11 @@ app.use(express.static(__dirname + "./public"));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+<<<<<<< HEAD
+=======
+// app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+>>>>>>> d25bbf92bf45be4d9cfc21c6945d31f9ae9fa7a2
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +38,7 @@ app.use('/', index);
 // app.use("/create", routes);
 
 
+<<<<<<< HEAD
 // listen on port 3000
 var port = process.env.PORT || 3000;
 db.sequelize.sync().then(function () {
@@ -40,3 +46,12 @@ db.sequelize.sync().then(function () {
     console.log("server listening on port", port);
   });
 });
+=======
+//create routes
+app.get('/', function (req, res) {
+  res.render("signup", {
+    message: ""
+  });
+}); // 
+app.listen(3000);
+>>>>>>> d25bbf92bf45be4d9cfc21c6945d31f9ae9fa7a2
